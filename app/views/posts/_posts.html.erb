@@ -12,10 +12,11 @@
 	  		</small>
 		</blockquote>
 	</div>
-	<div class="offset1 span2" style="margin:5px auto; border:1px">
-		<a class="btn btn-small" href="#">+1</a>
-		<a class="btn btn-small" href="#">-1</a>
+	<div class="span4" style="margin:5px auto; border:1px">
+		<%= button_to "+1 ", vote_post_path(post, type: "up", method: "post"), :class => "btn btn-small" %>
+		<%= button_to "-1 ", vote_post_path(post, type: "down", method: "post"), :class => "btn btn-small" %>
 		<br />
+		<%= pluralize post.reputation_for(:votes).to_i, "vote" %>
 		<br />
 		<a class="btn btn-small" href="#">Share</a>
 		<br />

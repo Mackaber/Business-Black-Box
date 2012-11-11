@@ -1,5 +1,7 @@
 Blackbox::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    member {post :vote }
+  end
   
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
