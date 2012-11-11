@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-    @posts = Post.all
+    #@posts = Post.all
+    @posts = Post.find_with_reputation(:votes, :all, order: "votes desc")
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

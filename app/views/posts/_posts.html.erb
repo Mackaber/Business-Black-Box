@@ -20,9 +20,8 @@
 				<%= button_to "-1 ", vote_post_path(post, type: "down", method: "post"), :class => "btn btn-small" %>
 			</div>
 		</div>
-		<a class="btn btn-small" href="#">Share</a>
-		<br />
-		<br />
+			<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= post.content %>" data-via="bbbox_" data-lang="es" data-hashtags="bbbox">Twittear</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		<a class="btn btn-small" href="#">+ Info</a>
 	</div>
   </div>	
