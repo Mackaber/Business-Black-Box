@@ -4,11 +4,11 @@
 	<div class="thumbnail" style="height:200px; width:700px; #FFFFFF border:1px solid #000; margin:0 auto;">
 		
   	<br />
-  	<div class="span9">
+  	<div class="span8">
 	  	<blockquote class="pull-left">
 	  		<p><%= post.content %></p>
 	  		<small>
-	  			<cite title="Source Title"><%= post.user.name %></cite>
+	  			<cite title="Source Title">by <%= post.user.name %> in <%= post.category %></cite>
 	  		</small>
 		</blockquote>
 	</div>
@@ -16,13 +16,21 @@
 		<div class="votes">
 			<%= pluralize post.reputation_for(:votes).to_i, "vote" %>
 			<div class="buttns-wrap">
-				<%= button_to "+1 ", vote_post_path(post, type: "up", method: "post"), :class => "btn btn-small" %>
-				<%= button_to "-1 ", vote_post_path(post, type: "down", method: "post"), :class => "btn btn-small" %>
+				<%= link_to raw('<i class="icon-thumbs-up"></i>'), vote_post_path(post, type: "up", method: "post"), :method => :post, :class => "btn btn-small" %>
+				<%= link_to raw('<i class="icon-thumbs-down"></i>'), vote_post_path(post, type: "down", method: "post"), :method => :post, :class => "btn btn-small" %>
 			</div>
 		</div>
-			<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= post.content %>" data-via="bbbox_" data-lang="es" data-hashtags="bbbox">Twittear</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		<a class="btn btn-small" href="#">+ Info</a>
+		<br />
+		<div class="votes">
+			<div>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= post.content %>" data-via="bbbox_" data-lang="es" data-hashtags="bbbox">Twittear</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			
+			<div>
+				<a class="btn btn-small" href="#">+ Info</a>
+			</div>
+		</div>
 	</div>
   </div>	
 <% end %>
