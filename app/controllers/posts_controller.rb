@@ -50,7 +50,7 @@ class PostsController < ApplicationController
         if user.provider == 'facebook'
           user.facebook.put_connections("me", "feed", :message => @post.content,:link => "http://businessblackbox.co")
         elsif user.provider == 'twitter'
-          user.twitter.update(@post.content + " #bbb (via @bbbox_)")
+          user.twitter.update(@post.content[0..115] + "... #bbb (via @bbbox_)")
         end
         format.html { redirect_to root_url, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
