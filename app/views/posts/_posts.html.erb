@@ -16,8 +16,10 @@
 		<div class="votes">
 			<%= pluralize post.reputation_for(:votes).to_i, "vote" %>
 			<div class="buttns-wrap">
-				<%= link_to raw('<i class="icon-thumbs-up"></i>'), vote_post_path(post, type: "up", method: "post"), :method => :post, :class => "btn btn-small" %>
-				<%= link_to raw('<i class="icon-thumbs-down"></i>'), vote_post_path(post, type: "down", method: "post"), :method => :post, :class => "btn btn-small" %>
+				<% if current_user %>
+					<%= link_to raw('<i class="icon-thumbs-up"></i>'), vote_post_path(post, type: "up", method: "post"), :method => :post, :class => "btn btn-small" %>
+					<%= link_to raw('<i class="icon-thumbs-down"></i>'), vote_post_path(post, type: "down", method: "post"), :method => :post, :class => "btn btn-small" %>
+				<% end %>
 			</div>
 		</div>
 		<br />
