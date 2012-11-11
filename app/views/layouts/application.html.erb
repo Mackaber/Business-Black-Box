@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Business Black Box</title>
+  
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <!-- <a class="brand" href="/">Social Cupon</a> -->
+         <ul class="nav">
+          <li><%= link_to image_tag("logo.png", :style => "width: 200px; height: 38px")%></li>
+         </ul>     
+         <ul class="nav pull-right">
+         	<% if current_user %>
+         		<ul class="nav pull-right">
+		            <li id="fat-menu" class="dropdown">
+		              <a href="#" id="drop1" role="button" class="dropdown-toggle" data-toggle="dropdown">
+		              	<%= current_user.name %> &nbsp; <b class="caret"></b>
+		              </a>
+		              <ul class="dropdown-menu" aria-labelledby="drop1">
+		                <li><%= link_to "Cerrar Sesion", "/signout" %></li>
+		              </ul>
+		            </li>
+	          	</ul>
+         	<% else %>	         		
+         		<li>
+              		<a href='auth/facebook'><button class='zocial facebook' style="font-size: 13px;">Registrate con Facebook</button></a>
+         		</li>
+         		<li>
+         			<a href='auth/twitter'><button class='zocial twitter' style="font-size: 13px;">Registrate con Twitter</button></a>
+         		</li>
+         	<% end %>
+         </ul>
+	  </div>
+    </div>
+</div>
+
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<div class="container" style="width:970px;">
+		<div class="row-fluid">
+			<%= yield %>
+		</div>
+	</div>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=257500134058";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-34652107-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</body>
+</html>

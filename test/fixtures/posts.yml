@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  user: 
+  category: MyString
+  voteup: 1
+  votedown: 
+
+two:
+  content: MyText
+  user: 
+  category: MyString
+  voteup: 1
+  votedown: 
