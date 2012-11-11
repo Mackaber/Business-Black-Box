@@ -42,9 +42,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.user = current_user
+    user = current_user
 
     respond_to do |format|
       if @post.save
+        if user.provider == 'facebook'
+          user.facebook.put_connections("me", "feed", :message => @post.content,:link => "http://businessblackbox.co")
+        else
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
@@ -80,6 +85,13 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+  
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @post = Post.find(params[:id])
+    @post.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to root_url
   end
   
 end
