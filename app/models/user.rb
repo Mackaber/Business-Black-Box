@@ -14,8 +14,12 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
-      user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.oauth_token = auth.credentials.token 
+      if user.provider == 'facebook'
+        user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      elsif user.provider == 'twitter'
+        user.oauth_secret = auth.credentials.secret  
+      end
       user.save!
       #user.image = auth.info.image 
     end
@@ -33,6 +37,13 @@ class User < ActiveRecord::Base
 
   def friends_count
     facebook { |fb| fb.get_connection("me","friends").size }
+  end
+  
+  #-----------------Twitter Stuff---------------------------
+  def twitter
+    if provider == "twitter"
+      @twitter ||= Twitter::Client.new(oauth_token: oauth_token, oauth_token_secret: oauth_secret)
+    end
   end
   
 end

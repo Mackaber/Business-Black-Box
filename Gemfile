@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'koala'
+gem 'twitter'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'activerecord-reputation-system', require: 'reputation_system'
