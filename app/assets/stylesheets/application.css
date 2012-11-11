@@ -11,3 +11,23 @@
  *= require_self
  *= require_tree .
  */
+.button_to{
+	width: 50px;
+	float: right;
+	margin:0px;
+}
+.buttns{
+	float: right !important;
+}
+.votes{
+	background: #EBEBEB;
+	padding:5px;
+	width: 100px;
+	height: 50px;
+	text-align: center;
+	border-radius: 10px;
+	margin:auto;
+}
+.buttns-wrap{
+	clear: both;
+}
