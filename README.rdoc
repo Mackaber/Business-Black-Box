@@ -1,3 +1,14 @@
+==Business Black Box
+Rails application to tell the world how your past businesses failed.
+
+To get started check
+link:config/initializers/omniauth_and_twitter.rb
+and add your own application keys for github and facebook
+
+This app was a project for a startup weekend, is NO longer maintained nor documented.
+
+Feel free to do whatever you want with it.
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
